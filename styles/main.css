@@ -1,0 +1,540 @@
+/* =====================================================
+   NOVASTORE
+   GLOBAL STYLES
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#f8f9fb;
+
+    color:#222;
+
+    overflow-x:hidden;
+
+}
+
+/* ==========================
+      ROOT COLORS
+========================== */
+
+:root{
+
+    --primary:#ff6b00;
+
+    --secondary:#ff8c42;
+
+    --dark:#222;
+
+    --light:#ffffff;
+
+    --gray:#777;
+
+    --bg:#f8f9fb;
+
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+/* ==========================
+      CONTAINER
+========================== */
+
+.container{
+
+    width:90%;
+
+    max-width:1300px;
+
+    margin:auto;
+
+}
+
+/* ==========================
+      LINKS
+========================== */
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+/* ==========================
+      IMAGES
+========================== */
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+/* ==========================
+      BUTTONS
+========================== */
+
+.btn{
+
+    display:inline-block;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    padding:14px 34px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+    box-shadow:var(--shadow);
+
+}
+
+.btn:hover{
+
+    background:#ff5400;
+
+    transform:translateY(-3px);
+
+}
+
+/* ==========================
+      SECTION
+========================== */
+
+section{
+
+    padding:90px 8%;
+
+}
+
+/* ==========================
+      TITLES
+========================== */
+
+.section-title{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+    color:#222;
+
+}
+/* ===========================================
+   ABOUT PAGE
+=========================================== */
+
+.about{
+
+    padding:140px 8% 80px;
+
+    background:#f8f9fb;
+
+}
+
+.about-text{
+
+    max-width:850px;
+
+    margin:30px auto 70px;
+
+    text-align:center;
+
+    font-size:18px;
+
+    line-height:34px;
+
+    color:#555;
+
+}
+
+.about-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:30px;
+
+}
+
+.about-card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:40px;
+
+    text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.about-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.about-card h2{
+
+    font-size:48px;
+
+    margin-bottom:20px;
+
+}
+
+.about-card h3{
+
+    margin-bottom:15px;
+
+    color:#222;
+
+}
+
+.about-card p{
+
+    color:#666;
+
+    line-height:28px;
+
+}
+/* ===========================================
+   CONTACT PAGE
+=========================================== */
+
+.contact{
+
+    padding:140px 8% 80px;
+
+    background:#f8f9fb;
+
+}
+
+.contact-subtitle{
+
+    text-align:center;
+
+    color:#666;
+
+    margin-top:-20px;
+
+    margin-bottom:60px;
+
+    font-size:18px;
+
+}
+
+.contact-wrapper{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:50px;
+
+    align-items:start;
+
+}
+
+.contact-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+.info-box{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.info-box h3{
+
+    color:#ff6b00;
+
+    margin-bottom:12px;
+
+}
+
+.info-box p{
+
+    color:#555;
+
+    line-height:28px;
+
+}
+
+.contact-form{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.contact-form input,
+
+.contact-form textarea{
+
+    width:100%;
+
+    padding:16px;
+
+    margin-bottom:20px;
+
+    border:1px solid #ddd;
+
+    border-radius:12px;
+
+    font-size:16px;
+
+    font-family:'Poppins',sans-serif;
+
+    outline:none;
+
+}
+
+.contact-form input:focus,
+
+.contact-form textarea:focus{
+
+    border-color:#ff6b00;
+
+}
+
+.contact-form button{
+
+    width:100%;
+
+    border:none;
+
+    cursor:pointer;
+
+}
+/* ===========================
+CHECKOUT
+=========================== */
+
+.checkout{
+
+padding:140px 8% 80px;
+
+background:#f8f9fb;
+
+}
+
+.checkout-grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:40px;
+
+}
+
+.checkout-form{
+
+background:white;
+
+padding:35px;
+
+border-radius:20px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.checkout-form h2{
+
+margin-bottom:25px;
+
+}
+
+.checkout-form input,
+
+.checkout-form select{
+
+width:100%;
+
+padding:16px;
+
+margin-bottom:18px;
+
+border:1px solid #ddd;
+
+border-radius:12px;
+
+font-size:16px;
+
+font-family:Poppins;
+
+}
+
+.order-summary{
+
+background:white;
+
+padding:35px;
+
+border-radius:20px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+position:sticky;
+
+top:110px;
+
+}
+
+.order-summary p{
+
+margin:15px 0;
+
+color:#555;
+
+}
+
+.order-summary h3{
+
+margin:25px 0;
+
+color:#ff6b00;
+
+}
+/* =====================================
+   ORDER CONFIRMATION
+===================================== */
+
+.confirmation{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:120px 8%;
+
+background:#f8f9fb;
+
+}
+
+.confirmation-box{
+
+background:#fff;
+
+padding:60px;
+
+border-radius:25px;
+
+text-align:center;
+
+max-width:700px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+.success-icon{
+
+font-size:90px;
+
+margin-bottom:25px;
+
+}
+
+.confirmation-box h1{
+
+font-size:42px;
+
+margin-bottom:20px;
+
+color:#222;
+
+}
+
+.confirmation-box p{
+
+font-size:18px;
+
+line-height:32px;
+
+color:#666;
+
+margin-bottom:30px;
+
+}
+
+.order-id{
+
+background:#fff4eb;
+
+padding:20px;
+
+border-radius:12px;
+
+font-size:20px;
+
+font-weight:600;
+
+color:#ff6b00;
+
+margin-bottom:35px;
+
+border:1px solid #ffd7ba;
+
+}
+
+.confirmation .btn{
+
+padding:16px 45px;
+
+font-size:18px;
+
+}

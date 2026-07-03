@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Categories | NovaStore</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/products.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        🛍 NovaStore
+    </div>
+
+    <nav class="nav">
+
+        <a href="index.html">Home</a>
+
+        <a href="category.html">Categories</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+    <a href="cart.html" class="cart-link">
+
+        🛒
+
+        <span id="cart-count">0</span>
+
+    </a>
+
+</header>
+
+<section class="products">
+
+    <h2 class="section-title" id="category-title">
+        Category Products
+    </h2>
+
+    <div id="product-grid" class="product-grid">
+
+    </div>
+
+</section>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const category = params.get("category");
+
+document.getElementById("category-title").textContent =
+category
+? category.charAt(0).toUpperCase() + category.slice(1)
+: "All Products";
+
+fetch(`https://fakestoreapi.com/products/category/${category}`)
+
+.then(res=>res.json())
+
+.then(products=>{
+
+const grid=document.getElementById("product-grid");
+
+products.forEach(product=>{
+
+const card=document.createElement("div");
+
+card.className="product-card";
+
+card.innerHTML=`
+
+<img src="${product.image}" alt="${product.title}">
+
+<h3>${product.title.substring(0,40)}</h3>
+
+<p>$${product.price}</p>
+
+<button>Add To Cart</button>
+
+`;
+
+card.onclick=()=>{
+
+window.location.href=`product.html?id=${product.id}`;
+
+};
+
+grid.appendChild(card);
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>

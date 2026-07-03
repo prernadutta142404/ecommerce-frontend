@@ -1,0 +1,96 @@
+/* ==========================================
+   HERO SECTION
+========================================== */
+
+.hero{
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.45)
+    ),
+    url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1600");
+
+    background-size:cover;
+
+    background-position:center;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    color:white;
+
+    padding-top:80px;
+
+}
+
+.hero-content{
+
+    max-width:750px;
+
+    animation:heroAnimation 1.2s ease;
+
+}
+
+.hero-content h1{
+
+    font-size:64px;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+    margin-bottom:20px;
+
+}
+
+.hero-content p{
+
+    font-size:22px;
+
+    color:#f5f5f5;
+
+    margin-bottom:40px;
+
+}
+
+.hero-content .btn{
+
+    font-size:18px;
+
+    padding:18px 42px;
+
+    border-radius:50px;
+
+}
+
+/* ============================
+      Animation
+============================ */
+
+@keyframes heroAnimation{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(50px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}

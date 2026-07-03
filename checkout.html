@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Checkout | NovaStore</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles/main.css">
+<link rel="stylesheet" href="styles/navbar.css">
+<link rel="stylesheet" href="styles/responsive.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">
+🛍 NovaStore
+</div>
+
+<nav class="nav">
+
+<a href="index.html">Home</a>
+
+<a href="category.html">Categories</a>
+
+<a href="about.html">About</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+<a href="cart.html" class="cart-link">
+
+🛒
+
+<span id="cart-count">0</span>
+
+</a>
+
+</header>
+
+<section class="checkout">
+
+<div class="container">
+
+<h1 class="section-title">
+
+Checkout
+
+</h1>
+
+<div class="checkout-grid">
+
+<div class="checkout-form">
+
+<h2>Billing Details</h2>
+
+<input type="text" placeholder="Full Name" required>
+
+<input type="email" placeholder="Email Address" required>
+
+<input type="text" placeholder="Phone Number" required>
+
+<input type="text" placeholder="Street Address" required>
+
+<input type="text" placeholder="City" required>
+
+<input type="text" placeholder="State" required>
+
+<input type="text" placeholder="ZIP Code" required>
+
+<select>
+
+<option>Cash on Delivery</option>
+
+<option>Credit Card</option>
+
+<option>UPI</option>
+
+<option>Net Banking</option>
+
+</select>
+
+</div>
+
+<div class="order-summary">
+
+<h2>Order Summary</h2>
+
+<div id="checkout-items">
+
+Your cart items will appear here.
+
+</div>
+
+<h3>
+
+Total:
+
+<span id="checkout-total">
+
+$0
+
+</span>
+
+</h3>
+
+<button id="placeOrder" class="btn">
+
+Place Order
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+const cart=JSON.parse(localStorage.getItem("cart"))||[];
+
+const checkoutItems=document.getElementById("checkout-items");
+
+const checkoutTotal=document.getElementById("checkout-total");
+
+let total=0;
+
+cart.forEach(item=>{
+
+total+=item.price*item.quantity;
+
+checkoutItems.innerHTML+=`
+
+<p>
+
+${item.title.substring(0,25)}
+
+x ${item.quantity}
+
+-
+
+$${(item.price*item.quantity).toFixed(2)}
+
+</p>
+
+`;
+
+});
+
+checkoutTotal.textContent="$"+total.toFixed(2);
+
+document.getElementById("placeOrder")
+
+.addEventListener("click",()=>{
+
+localStorage.removeItem("cart");
+
+window.location.href="confirmation.html";
+
+});
+
+</script>
+
+</body>
+
+</html>

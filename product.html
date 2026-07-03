@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details</title>
+
+<link rel="stylesheet" href="styles/main.css">
+
+<style>
+.product-page{
+    max-width:1000px;
+    margin:50px auto;
+    display:flex;
+    gap:40px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.product-page img{
+    width:350px;
+    height:350px;
+    object-fit:contain;
+}
+
+.product-info{
+    flex:1;
+}
+
+.product-info h1{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.product-info h2{
+    color:#ff6600;
+    margin-bottom:20px;
+}
+
+.quantity-box{
+    margin:20px 0;
+}
+
+.quantity-box button{
+    width:40px;
+    height:40px;
+    cursor:pointer;
+}
+
+.quantity-box span{
+    margin:0 15px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+#size{
+    padding:10px;
+    margin:20px 0;
+}
+
+#addCart{
+    background:#ff6600;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    cursor:pointer;
+    font-size:16px;
+    border-radius:5px;
+}
+
+#addCart:hover{
+    background:#e65c00;
+}
+</style>
+
+</head>
+<body>
+
+<div id="product-details"></div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+fetch(`https://fakestoreapi.com/products/${id}`)
+.then(response => response.json())
+.then(product => {
+
+document.getElementById("product-details").innerHTML = `
+
+<div class="product-page">
+
+    <img
+  src="${product.image}"
+  srcset="
+    ${product.image} 300w,
+    ${product.image} 600w,
+    ${product.image} 900w
+  "
+  sizes="(max-width: 600px) 300px,
+         (max-width: 900px) 600px,
+         900px"
+  alt="${product.title}"
+  loading="lazy"
+>
+
+    <div class="product-info">
+
+        <h1>${product.title}</h1>
+
+        <h2>$${product.price}</h2>
+
+        <p>${product.description}</p>
+
+        <div class="quantity-box">
+            <button id="minus">-</button>
+            <span id="qty">1</span>
+            <button id="plus">+</button>
+        </div>
+
+        <select id="size">
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+        </select>
+
+        <h3>
+            Total: $
+            <span id="totalPrice">
+                ${product.price.toFixed(2)}
+            </span>
+        </h3>
+
+        <br>
+
+        <button id="addCart">
+            Add To Cart
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+let qty = 1;
+
+const qtyText = document.getElementById("qty");
+const totalPrice = document.getElementById("totalPrice");
+
+document.getElementById("plus").addEventListener("click", () => {
+
+    qty++;
+
+    qtyText.textContent = qty;
+
+    totalPrice.textContent =
+        (product.price * qty).toFixed(2);
+
+});
+
+document.getElementById("minus").addEventListener("click", () => {
+
+    if(qty > 1){
+
+        qty--;
+
+        qtyText.textContent = qty;
+
+        totalPrice.textContent =
+            (product.price * qty).toFixed(2);
+
+    }
+
+});
+
+document.getElementById("addCart").addEventListener("click", () => {
+
+    let cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
+
+    const item = {
+
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.image,
+        quantity: qty,
+        size: document.getElementById("size").value
+
+    };
+
+    const existingItem =
+        cart.find(p => p.id === item.id);
+
+    if(existingItem){
+
+        existingItem.quantity += qty;
+
+    } else {
+
+        cart.push(item);
+
+    }
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    alert(`Added ${qty} item(s) to Cart!`);
+
+});
+
+})
+.catch(error => console.log(error));
+
+</script>
+<script src="scripts/app.js" defer></script>
+<script src="scripts/cart.js" defer></script>
+</body>
+</html>
